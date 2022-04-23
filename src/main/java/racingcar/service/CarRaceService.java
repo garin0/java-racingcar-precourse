@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constant.Configuration;
+import racingcar.constant.ViewMessage;
 import racingcar.domain.*;
 
 import java.util.ArrayList;

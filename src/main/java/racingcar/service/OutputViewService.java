@@ -9,4 +9,8 @@ public class OutputViewService {
         System.out.print(ViewMessage.WINNER_LIST);
         System.out.println(String.join(Configuration.NAME_DELIMITER, result.getWinner()));
     }
+
+    public void printResult() {
+        System.out.println("\n" + ViewMessage.GAME_RESULT);
+    }
 }

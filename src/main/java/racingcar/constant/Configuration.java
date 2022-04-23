@@ -8,4 +8,5 @@ public class Configuration {
     public static final int MIN_ACCELERATOR = 4;
     public static final String NAME_COLON = " : ";
     public static final String NAME_DELIMITER = ", ";
+    public static final int MIN_ROUND_COUNT = 1;
 }

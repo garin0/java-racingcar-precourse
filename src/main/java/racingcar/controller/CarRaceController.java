@@ -20,6 +20,7 @@ public class CarRaceController {
     public void run() {
         CarEntry entry = inputViewService.setCarRaceEntity();
         Circuit circuit = inputViewService.setCarRaceCircuit();
+        outputViewService.printResult();
         carRaceService = new CarRaceService(entry, circuit);
         Result result = carRaceService.start();
         outputViewService.printWinner(result);

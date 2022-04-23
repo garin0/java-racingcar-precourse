@@ -32,7 +32,19 @@ public class InputViewService {
     private Circuit readCircuitRoundFromUser() {
         System.out.println(ViewMessage.RACE_COUNT);
         String roundStr = Console.readLine();
-        return new Circuit(Integer.parseInt(roundStr));
+        int round = Integer.parseInt(roundStr);
+        try {
+            validateCircuitRound(round);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return new Circuit(round);
+    }
+
+    private void validateCircuitRound(int round) {
+        if (round < Configuration.MIN_ROUND_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ROUND_INPUT);
+        }
     }
 
 
@@ -45,7 +57,7 @@ public class InputViewService {
 
     private void validateCarNameLengthIsOver(String name) {
         if (name.length() > Configuration.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_OVER);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ROUND_INPUT);
         }
     }
 
