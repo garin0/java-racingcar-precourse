@@ -9,11 +9,6 @@ public class Position {
         this.distanceView = "";
     }
 
-    public Position(int distance, String distanceView) {
-        this.distance = distance;
-        this.distanceView = distanceView;
-    }
-
     public int getDistance() {
         return distance;
     }

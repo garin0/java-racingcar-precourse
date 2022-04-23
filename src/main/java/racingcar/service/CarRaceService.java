@@ -2,7 +2,6 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constant.Configuration;
-import racingcar.constant.ViewMessage;
 import racingcar.domain.*;
 
 import java.util.ArrayList;
@@ -23,8 +22,7 @@ public class CarRaceService {
         playCarRaceByRound();
         Collections.sort(carEntry.getCars());
         // 우승자 뽑기
-        Result result = setRaceWinner();
-        return result;
+        return setRaceWinner();
     }
 
     private void playCarRaceByRound() {
@@ -60,8 +58,7 @@ public class CarRaceService {
         List<Car> cars = carEntry.getCars();
         Car firstPlace = cars.get(0);
         int maxDistance = firstPlace.getPosition().getDistance();
-        Result result = compareAllEntryCars(maxDistance, cars);
-        return result;
+        return compareAllEntryCars(maxDistance, cars);
     }
 
     private Result compareAllEntryCars(int maxDistance, List<Car> cars) {

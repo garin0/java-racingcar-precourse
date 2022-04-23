@@ -26,19 +26,36 @@ public class InputViewService {
     }
 
     public Circuit setCarRaceCircuit() {
-        return readCircuitRoundFromUser();
+        return getCircuitSetting();
     }
 
-    private Circuit readCircuitRoundFromUser() {
+    private Circuit getCircuitSetting() {
+        String roundStr = getRoundCount();
+        while(!isValidCircuitRoundCount(roundStr)) {
+            roundStr = getRoundCount();
+        }
+        return new Circuit(Integer.parseInt(roundStr));
+    }
+
+    private String getRoundCount() {
         System.out.println(ViewMessage.RACE_COUNT);
-        String roundStr = Console.readLine();
+        return Console.readLine();
+    }
+
+    private String getCarNames() {
+        System.out.println(ViewMessage.ENTRY_CAR_NAME);
+        return Console.readLine();
+    }
+
+    private boolean isValidCircuitRoundCount(String roundStr) {
         int round = Integer.parseInt(roundStr);
         try {
             validateCircuitRound(round);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return false;
         }
-        return new Circuit(round);
+        return true;
     }
 
     private void validateCircuitRound(int round) {
@@ -49,16 +66,29 @@ public class InputViewService {
 
 
     private CarEntry readCarEntryFromUser() {
-        System.out.println(ViewMessage.ENTRY_CAR_NAME);
-        String nameStr = Console.readLine();
+        String nameStr = getCarNames();
+        while(!isValidCarNameLength(nameStr)){
+            nameStr = getCarNames();
+        }
         String[] nameList = nameStr.split(Configuration.SPLIT_CHAR);
         return addCarsToCarEntity(nameList);
     }
 
     private void validateCarNameLengthIsOver(String name) {
         if (name.length() > Configuration.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_ROUND_INPUT);
+            throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_OVER);
         }
+    }
+
+    private boolean isValidCarNameLength(String nameStr) {
+        String[] nameList = nameStr.split(Configuration.SPLIT_CHAR);
+        try {
+            addCarsToCarEntity(nameList);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     private CarEntry addCarsToCarEntity(String[] nameList) {
