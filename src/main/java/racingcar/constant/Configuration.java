@@ -7,4 +7,5 @@ public class Configuration {
     public static final int MAX_DISTANCE = 9;
     public static final int MIN_ACCELERATOR = 4;
     public static final String NAME_COLON = " : ";
+    public static final String NAME_DELIMITER = ", ";
 }

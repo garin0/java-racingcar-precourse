@@ -3,7 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.constant.Configuration;
 import racingcar.constant.ErrorMessage;
-import racingcar.constant.InputMessage;
+import racingcar.constant.ViewMessage;
 import racingcar.domain.Car;
 import racingcar.domain.CarEntry;
 import racingcar.domain.Circuit;
@@ -30,14 +30,14 @@ public class InputViewService {
     }
 
     private Circuit readCircuitRoundFromUser() {
-        System.out.println(InputMessage.RACE_COUNT);
+        System.out.println(ViewMessage.RACE_COUNT);
         String roundStr = Console.readLine();
         return new Circuit(Integer.parseInt(roundStr));
     }
 
 
     private CarEntry readCarEntryFromUser() {
-        System.out.println(InputMessage.ENTRY_CAR_NAME);
+        System.out.println(ViewMessage.ENTRY_CAR_NAME);
         String nameStr = Console.readLine();
         String[] nameList = nameStr.split(Configuration.SPLIT_CHAR);
         return addCarsToCarEntity(nameList);

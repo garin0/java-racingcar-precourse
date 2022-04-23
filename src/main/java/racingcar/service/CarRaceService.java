@@ -1,32 +1,29 @@
 package racingcar.service;
 
-import racingcar.constant.Configuration;
-import racingcar.domain.Car;
-import racingcar.domain.CarEntry;
-import racingcar.domain.Circuit;
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.Position;
+import racingcar.constant.Configuration;
+import racingcar.domain.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class CarRaceService {
     private CarEntry carEntry;
     private Circuit circuit;
+    private List<String> winner = new ArrayList<>();
 
     public CarRaceService(CarEntry carEntry, Circuit circuit) {
         this.carEntry = carEntry;
         this.circuit = circuit;
     }
 
-    public void start() {
+    public Result start() {
         playCarRaceByRound();
         Collections.sort(carEntry.getCars());
-
-        for(Car car : carEntry.getCars()) {
-            System.out.print(car.getName() + " ");
-        }
         // 우승자 뽑기
+        Result result = setRaceWinner();
+        return result;
     }
 
     private void playCarRaceByRound() {
@@ -58,8 +55,27 @@ public class CarRaceService {
         position.increaseDistance();
     }
 
-    private setRaceWinner() {
-        int maxDistance = Integer.MIN_VALUE;
+    private Result setRaceWinner() {
+        List<Car> cars = carEntry.getCars();
+        Car firstPlace = cars.get(0);
+        int maxDistance = firstPlace.getPosition().getDistance();
+        Result result = compareAllEntryCars(maxDistance, cars);
+        return result;
+    }
 
+    private Result compareAllEntryCars(int maxDistance, List<Car> cars) {
+        Result result = new Result();
+        for (Car car : cars) {
+            compareCandidateDistanceToWinner(car, maxDistance);
+            result.setWinner(winner);
+        }
+        return result;
+    }
+
+    private void compareCandidateDistanceToWinner(Car candidate, int maxDistance) {
+        Position positionOfCandidate = candidate.getPosition();
+        if (positionOfCandidate.getDistance() == maxDistance) {
+            winner.add(candidate.getName());
+        }
     }
 }

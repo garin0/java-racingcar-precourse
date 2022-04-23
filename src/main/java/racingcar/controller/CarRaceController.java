@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.CarEntry;
 import racingcar.domain.Circuit;
+import racingcar.domain.Result;
 import racingcar.service.CarRaceService;
 import racingcar.service.InputViewService;
 import racingcar.service.OutputViewService;
@@ -20,6 +21,7 @@ public class CarRaceController {
         CarEntry entry = inputViewService.setCarRaceEntity();
         Circuit circuit = inputViewService.setCarRaceCircuit();
         carRaceService = new CarRaceService(entry, circuit);
-        carRaceService.start();
+        Result result = carRaceService.start();
+        outputViewService.printWinner(result);
     }
 }
