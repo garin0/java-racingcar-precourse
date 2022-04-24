@@ -5,4 +5,5 @@ public class ViewMessage {
     public static final String RACE_COUNT = "시도할 회수는 몇회인가요?";
     public static final String GAME_RESULT = "실행 결과";
     public static final String WINNER_LIST = "최종 우승자: ";
+    public static final String DISTANCE_BAR = "-";
 }

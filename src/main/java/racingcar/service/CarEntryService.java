@@ -56,7 +56,7 @@ public class CarEntryService {
         List<Car> carList = new ArrayList<>();
         for(String name : nameList) {
             validateCarNameLengthIsOver(name);
-            carList.add(new Car(name, 0));
+            carList.add(new Car(name, Configuration.MIN_DISTANCE));
         }
         return new CarEntry(carList);
     }

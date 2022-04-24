@@ -14,11 +14,4 @@ public class Record {
     public List<Pair<String, Integer>> getRecordsByRound() {
         return recordsByRound;
     }
-
-    @Override
-    public String toString() {
-        return "Record{" +
-                "recordsByRound=" + recordsByRound +
-                '}';
-    }
 }
