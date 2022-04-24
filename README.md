@@ -19,9 +19,17 @@
 출력 후 그 부분부터 입력을 다시 받는다. 
 - Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
 
+## 2주차 추가 요구사항
+1. 일급콜렉션을 활용해 구현한다.
+•참고문서: https://developerfarm.wordpress.com/2012/02/01/object_calisthenics_/
+2. 모든 원시값과 문자열을 포장한다.
+•참고문서: https://developerfarm.wordpress.com/2012/01/27/object_calisthenics_4
+
 ## 구현 기능 목록
 1. 자동차 경주에 출전할 사용자 이름 입력
+ - 5자 초과시, 에러 발생하며 재입력 유도
 2. 자동차 경주 총 라운드 입력
+ - 1 미만의 숫자 입력시, 에러 발생하며 재입력 유도
 3. 입력받은 라운드 마다 랜덤값을 생성하여 4이상이면 전진, 아니면 정지
 4. 라운드 마다 진행된 결과를 출력
 5. 라운드가 끝난 후 우승자 선정
