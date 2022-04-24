@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-    List<String> winner;
     List<Record> recordList;
 
     public Result(List<Record> recordList) {

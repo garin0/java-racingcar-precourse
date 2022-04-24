@@ -3,7 +3,6 @@ package racingcar.service;
 import javafx.util.Pair;
 import racingcar.constant.Configuration;
 import racingcar.constant.ViewMessage;
-import racingcar.domain.CarEntry;
 import racingcar.domain.Record;
 import racingcar.domain.Result;
 
@@ -11,10 +10,8 @@ import java.util.List;
 
 public class ResultService {
     private Result result;
-    private CarEntry carEntry;
 
-    public ResultService(CarEntry carEntry, Result result) {
-        this.carEntry = carEntry;
+    public ResultService(Result result) {
         this.result = result;
     }
 

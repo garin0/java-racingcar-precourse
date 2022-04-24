@@ -21,7 +21,7 @@ public class CarRaceController {
         Circuit circuit = circuitService.makeCarRaceCircuit();
         carRaceService = new CarRaceService(entry, circuit);
         Result result = carRaceService.start();
-        resultService = new ResultService(entry, result);
+        resultService = new ResultService(result);
         resultService.printResult();
     }
 }
